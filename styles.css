@@ -1,0 +1,210 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f7f5f2;
+  --surface: #ffffff;
+  --text: #2c2c2c;
+  --text-muted: #999;
+  --accent: #6b8f71;
+  --accent-hover: #5a7d60;
+  --danger: #c97c7c;
+  --danger-hover: #b86b6b;
+  --border: #e8e4df;
+  --completed-bg: #f0ede9;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 24px 20px 12px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.5px;
+}
+
+/* Input bar */
+.add-form {
+  display: flex;
+  gap: 10px;
+  padding: 12px 20px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+}
+
+.add-form input {
+  flex: 1;
+  height: 50px;
+  padding: 0 16px;
+  font-size: 17px;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.add-form input:focus {
+  border-color: var(--accent);
+}
+
+.add-form input::placeholder {
+  color: var(--text-muted);
+}
+
+.add-form button {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 14px;
+  background: var(--accent);
+  color: white;
+  font-size: 28px;
+  font-weight: 300;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.add-form button:active {
+  background: var(--accent-hover);
+}
+
+/* List */
+.todo-list {
+  list-style: none;
+  padding: 0 20px 40px;
+  flex: 1;
+}
+
+.todo-list:empty::after {
+  content: "Nothing here yet \2014 add something!";
+  display: block;
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px 20px;
+  font-size: 15px;
+}
+
+/* Item */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  background: var(--surface);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  transition: opacity 0.2s, background 0.2s;
+}
+
+.todo-item.completed {
+  background: var(--completed-bg);
+  opacity: 0.6;
+}
+
+/* Checkbox */
+.todo-item .check {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.todo-item .check:active {
+  transform: scale(0.92);
+}
+
+.todo-item.completed .check {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.todo-item.completed .check::after {
+  content: "\2713";
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Text */
+.todo-item .text {
+  flex: 1;
+  font-size: 17px;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.todo-item.completed .text {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+/* Delete */
+.todo-item .delete {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, background 0.15s;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.todo-item .delete:active {
+  background: var(--danger);
+  color: white;
+}
+
+/* Safe area for iPhone notch */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .todo-list {
+    padding-bottom: calc(40px + env(safe-area-inset-bottom));
+  }
+}

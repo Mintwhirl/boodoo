@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#6b8f71">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <title>Boo Boo Do</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Boo Boo Do</h1>
+    </header>
+
+    <form id="add-form" class="add-form">
+      <input
+        type="text"
+        id="todo-input"
+        placeholder="Add something..."
+        autocomplete="off"
+        enterkeyhint="done"
+      >
+      <button type="submit" id="add-btn" aria-label="Add task">+</button>
+    </form>
+
+    <ul id="todo-list" class="todo-list"></ul>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+</body>
+</html>
