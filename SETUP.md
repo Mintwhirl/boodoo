@@ -38,6 +38,9 @@ If it's not in the "Features" section below, it doesn't exist and won't be added
 - Add a new task
 - Toggle task complete / incomplete
 - Delete a task
+- Active / Completed tabs
+- Completed tasks show completion date
+- Celebration animation when checking off a task
 - Real-time sync between devices
 - Works offline (loads cached version, syncs when back online)
 - Installable as a PWA on iPhone and Android
@@ -73,12 +76,13 @@ vercel.json      — Vercel static site config
 
 Single table: `todos`
 
-| Column      | Type          | Default              |
-|-------------|---------------|----------------------|
-| id          | UUID          | `gen_random_uuid()`  |
-| text        | TEXT          | —                    |
-| completed   | BOOLEAN       | `false`              |
-| created_at  | TIMESTAMPTZ   | `now()`              |
+| Column       | Type          | Default              |
+|--------------|---------------|----------------------|
+| id           | UUID          | `gen_random_uuid()`  |
+| text         | TEXT          | —                    |
+| completed    | BOOLEAN       | `false`              |
+| completed_at | TIMESTAMPTZ   | `null`               |
+| created_at   | TIMESTAMPTZ   | `now()`              |
 
 No other tables. No foreign keys. No migrations to manage.
 
@@ -99,6 +103,7 @@ CREATE TABLE todos (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   text TEXT NOT NULL,
   completed BOOLEAN DEFAULT FALSE,
+  completed_at TIMESTAMPTZ,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 

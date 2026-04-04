@@ -11,6 +11,9 @@ A single shared todo list that two people use on their phones every day. Add som
 - Add a new task
 - Toggle task complete / incomplete
 - Delete a task
+- Active / Completed tabs
+- Completed tasks show completion date
+- Celebration animation when checking off a task
 - Real-time sync between devices
 - Works offline
 - Installable as a PWA on iPhone and Android
