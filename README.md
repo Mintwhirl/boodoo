@@ -53,8 +53,8 @@ No frameworks. No build tools. No server-side code.
 
 ```
 index.html       — App shell, meta tags, PWA manifest link
-styles.css       — Mobile-first styles
-script.js        — Supabase client, CRUD, realtime subscription
+styles.css       — Mobile-first styles, organic watercolor background, frosted glass cards
+script.js        — Supabase client, CRUD, tabs, celebration, realtime subscription
 manifest.json    — PWA manifest
 sw.js            — Service worker (caches static assets)
 icon-192.png     — App icon (192x192)

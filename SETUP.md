@@ -63,12 +63,13 @@ No frameworks. No build tools. No server-side code.
 
 ```
 index.html       — App shell, meta tags, PWA manifest link
-styles.css       — Mobile-first styles
-script.js        — Supabase client, CRUD, realtime subscription, SW registration
+styles.css       — Mobile-first styles, organic watercolor background, frosted glass cards
+script.js        — Supabase client, CRUD, tabs, celebration, realtime subscription, SW registration
 manifest.json    — PWA manifest (name, icons, theme)
 sw.js            — Service worker (caches static assets)
 icon-192.png     — App icon (192x192)
 icon-512.png     — App icon (512x512)
+pwa_icon.png     — Source icon file
 vercel.json      — Vercel static site config
 ```
 
