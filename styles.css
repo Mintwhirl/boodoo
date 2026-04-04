@@ -61,13 +61,11 @@ header h1 {
 .add-form {
   display: flex;
   gap: 10px;
-  padding: 12px 20px 16px;
+  padding: 12px 20px 20px;
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(242, 248, 243, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: transparent;
 }
 
 .add-form input {
@@ -113,7 +111,7 @@ header h1 {
 .tabs {
   display: flex;
   gap: 4px;
-  padding: 0 20px 12px;
+  padding: 0 20px 16px;
 }
 
 .tab {
@@ -179,7 +177,7 @@ header h1 {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  border: 2px solid var(--border);
+  border: 2px solid #b0b5b1;
   flex-shrink: 0;
   cursor: pointer;
   display: flex;
