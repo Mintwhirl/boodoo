@@ -8,7 +8,7 @@
   --bg: #f7f5f2;
   --surface: #ffffff;
   --text: #2c2c2c;
-  --text-muted: #999;
+  --text-muted: #666;
   --accent: #6b8f71;
   --accent-hover: #5a7d60;
   --danger: #c97c7c;
@@ -97,6 +97,32 @@ header h1 {
 
 .add-form button:active {
   background: var(--accent-hover);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 4px;
+  padding: 0 20px 12px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.tab.active {
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
 }
 
 /* List */
@@ -207,4 +233,49 @@ header h1 {
   .todo-list {
     padding-bottom: calc(40px + env(safe-area-inset-bottom));
   }
+}
+
+/* Completion date */
+.todo-item .completed-date {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Celebration popup */
+.celebration {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: var(--accent);
+  color: white;
+  padding: 16px 32px;
+  border-radius: 20px;
+  font-size: 22px;
+  font-weight: 700;
+  z-index: 100;
+  pointer-events: none;
+  animation: celeb-pop 1.4s ease forwards;
+  white-space: nowrap;
+}
+
+@keyframes celeb-pop {
+  0%   { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  15%  { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+  30%  { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  75%  { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+}
+
+/* Confetti bits */
+.confetti {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  z-index: 99;
+  pointer-events: none;
 }
