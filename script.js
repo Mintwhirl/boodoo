@@ -20,10 +20,15 @@ let allTodos = [];
 // --- Tab switching ---
 document.querySelectorAll('.tab').forEach(btn => {
   btn.addEventListener('click', () => {
+    const newTab = btn.dataset.tab;
+    if (newTab === currentTab) return;
+
     document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    currentTab = btn.dataset.tab;
-    renderTodos();
+
+    const goingRight = currentTab === 'active';
+    currentTab = newTab;
+    renderTodos(goingRight);
   });
 });
 
@@ -44,7 +49,7 @@ async function loadTodos() {
 }
 
 // --- Render filtered list ---
-function renderTodos() {
+function renderTodos(animateRight) {
   const filtered = allTodos.filter(t =>
     currentTab === 'active' ? !t.completed : t.completed
   );
@@ -52,6 +57,15 @@ function renderTodos() {
   listEl.innerHTML = '';
   for (const todo of filtered) {
     listEl.appendChild(createTodoEl(todo));
+  }
+
+  // Animate tab switch
+  if (animateRight !== undefined) {
+    const dir = animateRight ? 1 : -1;
+    listEl.animate([
+      { transform: `translateX(${dir * 30}px)`, opacity: 0 },
+      { transform: 'translateX(0)', opacity: 1 }
+    ], { duration: 250, easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)' });
   }
 }
 
@@ -178,6 +192,9 @@ const CHEERS = [
 ];
 
 function celebrate() {
+  // Haptic feedback (double tap)
+  if (navigator.vibrate) navigator.vibrate([15, 30, 15]);
+
   // Popup
   const el = document.createElement('div');
   el.className = 'celebration';
