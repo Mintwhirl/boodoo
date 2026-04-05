@@ -202,24 +202,30 @@ function celebrate() {
   document.body.appendChild(el);
   el.addEventListener('animationend', () => el.remove());
 
-  // Confetti bits
-  const colors = ['#6b8f71', '#c97c7c', '#d4a574', '#7c9ec9', '#c9a87c', '#a07cc9'];
-  for (let i = 0; i < 16; i++) {
+  // Confetti explosion
+  const colors = ['#2e7d32', '#d32f2f', '#ff9800', '#1976d2', '#e91e63', '#9c27b0', '#ffeb3b', '#00bcd4'];
+  const count = 30;
+  for (let i = 0; i < count; i++) {
     const bit = document.createElement('div');
     bit.className = 'confetti';
-    bit.style.background = colors[Math.floor(Math.random() * colors.length)];
-    const angle = (Math.PI * 2 * i) / 16 + (Math.random() - 0.5) * 0.5;
-    const dist = 80 + Math.random() * 120;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    bit.style.background = color;
+    bit.style.boxShadow = `0 0 6px ${color}`;
+    const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.6;
+    const dist = 120 + Math.random() * 180;
     const dx = Math.cos(angle) * dist;
     const dy = Math.sin(angle) * dist;
-    bit.style.setProperty('--dx', dx + 'px');
-    bit.style.setProperty('--dy', dy + 'px');
+    const size = 8 + Math.random() * 10;
+    bit.style.width = size + 'px';
+    bit.style.height = size + 'px';
+    const rotation = Math.random() * 720 - 360;
     bit.animate([
-      { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
-      { transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(0.3)`, opacity: 0 }
-    ], { duration: 900 + Math.random() * 400, easing: 'cubic-bezier(.2,.8,.3,1)' });
+      { transform: 'translate(-50%, -50%) scale(0) rotate(0deg)', opacity: 1 },
+      { transform: 'translate(-50%, -50%) scale(1.2) rotate(180deg)', opacity: 1, offset: 0.2 },
+      { transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(0.2) rotate(${rotation}deg)`, opacity: 0 }
+    ], { duration: 1000 + Math.random() * 600, easing: 'cubic-bezier(.15,.9,.3,1)' });
     document.body.appendChild(bit);
-    setTimeout(() => bit.remove(), 1400);
+    setTimeout(() => bit.remove(), 1700);
   }
 }
 
